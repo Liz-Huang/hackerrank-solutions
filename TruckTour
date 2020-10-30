@@ -1,0 +1,27 @@
+    static int truckTour(int[][] petrolpumps) {
+        /*
+         * Write your code here.
+         */
+
+        int N = petrolpumps.length;
+        int index = 0;
+        while(index < N){
+            int curIndex = index;
+            int total = (petrolpumps[curIndex][0] - petrolpumps[curIndex][1]);
+            //System.out.println(index+" total="+total);  
+            int count = 1;
+            while(total > 0 && count < N) {
+                count++;
+                curIndex++;
+                if(curIndex == N) curIndex = 0;
+                total += (petrolpumps[curIndex][0] - petrolpumps[curIndex][1]);  
+                //System.out.println(index+" count="+count+" total="+total);           
+            }
+            if(count == N) return index;
+            index++;
+        }
+        return N;
+
+        
+
+    }
