@@ -1,0 +1,23 @@
+    public static void postOrder(Node root) {
+        /*if(root == null) return;
+        postOrder(root.left);
+        postOrder(root.right);
+        System.out.println(root.data+" "); */
+        Node t = root;
+        Stack<Node> stack = new Stack<Node>();
+        stack.push(root);
+        while(!stack.isEmpty() && root!=null){
+            Node curr = stack.peek();
+            //nodes without children should be printed 
+            if( (curr.left==null && curr.right==null) 
+            || (t==curr.left||t==curr.right) ){//or nodes whose children have already been printed 
+                System.out.print(curr.data+" ");
+                stack.pop();
+                t = curr;
+            } else {
+                if(curr.right!=null) stack.push(curr.right);
+                if(curr.left!=null) stack.push(curr.left);
+            }
+        }        
+
+    }
